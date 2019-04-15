@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 19:15:50 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/12 21:27:46 by fgarault         ###   ########.fr       */
+/*   Created: 2019/04/12 23:03:03 by fgarault          #+#    #+#             */
+/*   Updated: 2019/04/12 23:14:32 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+int		ft_isascii(int c)
 {
-	size_t	len_s1;
-	size_t	len_g;
-
-	len_s1 = ft_strlen(s1);
-	ft_strcpy(&s1[len_s1], s2);
-	len_g = ft_strlen(s1);
-	s1[len_g + 1] = '\0';
-	return (s1);
+	if ((c >= 0) && (c <= 127))
+		return (1);
+	return (0);
 }

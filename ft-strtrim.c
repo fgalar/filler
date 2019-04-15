@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft-strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 19:15:50 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/12 21:27:46 by fgarault         ###   ########.fr       */
+/*   Created: 2019/04/15 11:42:04 by fgarault          #+#    #+#             */
+/*   Updated: 2019/04/15 12:32:04 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+char	*ft_strtrim(char const *s)
 {
-	size_t	len_s1;
-	size_t	len_g;
+	int		start;
+	int		end;
+	char	*str;
 
-	len_s1 = ft_strlen(s1);
-	ft_strcpy(&s1[len_s1], s2);
-	len_g = ft_strlen(s1);
-	s1[len_g + 1] = '\0';
-	return (s1);
+	start = 0;
+	end = strlen(s);
+	while (s[start] == ' ' || s[start] == '\n' || s[start] == '\t')
+		start++;
+	while (s[end] == ' ' || s[end] == '\n' || s[end] == '\t')
+		end--;
+	if ((end == strlen(s)) && (start == 0)
+		return (s)
+	if 
 }

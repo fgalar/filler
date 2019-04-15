@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 19:15:50 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/12 21:27:46 by fgarault         ###   ########.fr       */
+/*   Created: 2019/04/13 16:12:07 by fgarault          #+#    #+#             */
+/*   Updated: 2019/04/13 20:33:03 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	len_s1;
-	size_t	len_g;
+	int		i;
+	char	cc;
+	char	*strch;
 
-	len_s1 = ft_strlen(s1);
-	ft_strcpy(&s1[len_s1], s2);
-	len_g = ft_strlen(s1);
-	s1[len_g + 1] = '\0';
-	return (s1);
+	i = 0;
+	cc = (char)c;
+	strch = (char*)s;
+	while (strch[i] != '\0')
+		i++;
+	if (cc == '\0')
+		return (&strch[i]);
+	while ((strch[i] != cc) && (i > 0))
+		i--;
+	if (strch[i] == cc)
+		return (&strch[i]);
+	return (0);
 }
