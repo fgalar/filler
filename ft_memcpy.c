@@ -6,7 +6,7 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 17:56:10 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/10 15:20:52 by fgarault         ###   ########.fr       */
+/*   Updated: 2019/04/20 17:15:24 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	ch_t_dest = (char*)dst;
 	ch_t_src = (char*)src;
 	i = 0;
-	while (n && (ch_t_dest[i] || ch_t_src[i]))
+	while (n > 0)
 	{
 		ch_t_dest[i] = ch_t_src[i];
 		i++;

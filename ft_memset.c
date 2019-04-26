@@ -6,7 +6,7 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 18:47:39 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/09 18:53:42 by fgarault         ###   ########.fr       */
+/*   Updated: 2019/04/20 18:05:19 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	*ft_memset(void *b, int c, size_t len)
 	char *cpy;
 
 	cpy = (char*)b;
-	if (b == NULL)
-		return (NULL);
 	while (len)
 	{
 		*cpy = c;

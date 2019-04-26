@@ -6,7 +6,7 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 18:26:46 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/14 19:26:48 by fgarault         ###   ########.fr       */
+/*   Updated: 2019/04/20 19:00:11 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		ft_atoi(const char *str)
 {
-	int		i;
-	int		sign;
-	int		res;
+	int				i;
+	int				sign;
+	unsigned int	res;
 
 	i = 0;
 	sign = 1;
