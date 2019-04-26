@@ -6,12 +6,12 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 20:00:30 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/26 12:31:42 by fgarault         ###   ########.fr       */
+/*   Updated: 2019/04/26 17:31:49 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include <stdlib.h>
+#include "libft.h"
 
 t_list	*ft_lstnew(void const *content, size_t content_size)
 {

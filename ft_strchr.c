@@ -6,11 +6,9 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 15:44:50 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/13 16:32:29 by fgarault         ###   ########.fr       */
+/*   Updated: 2019/04/26 17:16:43 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {

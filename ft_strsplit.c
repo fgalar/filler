@@ -6,11 +6,10 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 13:46:23 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/26 15:24:30 by fgarault         ###   ########.fr       */
+/*   Updated: 2019/04/26 17:25:59 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include <stdlib.h>
 
 static char	*ft_strduptil(const char *src, char c)

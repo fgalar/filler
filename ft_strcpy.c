@@ -6,11 +6,9 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 11:43:05 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/12 13:22:31 by fgarault         ###   ########.fr       */
+/*   Updated: 2019/04/26 17:14:35 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 char	*ft_strcpy(char *dst, const char *src)
 {

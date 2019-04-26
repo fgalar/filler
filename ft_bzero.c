@@ -6,11 +6,12 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 11:21:53 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/26 12:41:54 by fgarault         ###   ########.fr       */
+/*   Updated: 2019/04/26 17:38:28 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
 void	ft_bzero(void *s, size_t n)
 {
