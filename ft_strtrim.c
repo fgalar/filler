@@ -6,7 +6,7 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 11:42:04 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/25 20:52:04 by fgarault         ###   ########.fr       */
+/*   Updated: 2019/04/26 15:14:32 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char	*ft_strtrim(char const *s)
 	char	*str;
 
 	start = 0;
-	end = ft_strlen(s) - 1;
 	if (s == NULL)
 		return (NULL);
+	end = ft_strlen(s) - 1;
 	while (s[start] == ' ' || s[start] == '\n' || s[start] == '\t')
 		start++;
 	while (s[end] == ' ' || s[end] == '\n' || s[end] == '\t')

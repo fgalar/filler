@@ -6,7 +6,7 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 11:21:53 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/09 16:22:34 by fgarault         ###   ########.fr       */
+/*   Updated: 2019/04/26 12:41:54 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	char	*str;
-
-	str = (char*)s;
-	if (n == 0)
-		return ;
 	if (n)
 		ft_memset(s, 0, n);
 }

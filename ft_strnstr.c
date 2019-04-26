@@ -6,7 +6,7 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 17:10:13 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/13 20:39:58 by fgarault         ###   ########.fr       */
+/*   Updated: 2019/04/26 11:55:28 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	char	*to_find;
 
 	i = 0;
-	j = 0;
 	str = (char*)haystack;
 	to_find = (char*)needle;
 	if (to_find[0] == '\0')

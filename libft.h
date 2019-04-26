@@ -6,7 +6,7 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 18:19:35 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/24 17:48:44 by fgarault         ###   ########.fr       */
+/*   Updated: 2019/04/26 15:15:25 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,6 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 void				print_list(t_list *list);
 int					ft_len_int(int n);
+void				ft_reinit_mem(void *s);
 
 #endif
