@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/19 20:29:05 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/26 18:20:39 by fgarault         ###   ########.fr       */
+/*   Created: 2019/04/03 10:55:58 by fgarault          #+#    #+#             */
+/*   Updated: 2019/04/08 13:31:39 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
 
-char		*ft_itoa(int n)
+int		*ft_range(int min, int max)
 {
-	char			*str_nb;
-	int				i;
-	unsigned int	nb;
+	int		*tab;
+	int		i;
 
-	i = ft_len_int(n);
-	if (!(str_nb = ft_strnew(i)))
+	if (min >= max)
 		return (NULL);
-	if (n <= 0)
+	if ((tab = (int*)malloc(sizeof(int) * (max - min))) == NULL)
+		return (NULL);
+	i = 0;
+	while (min < max)
 	{
-		if (n == 0)
-		{
-			str_nb[0] = '0';
-			return (str_nb);
-		}
-		str_nb[0] = '-';
-		n *= -1;
+		tab[i] = min;
+		i++;
+		min++;
 	}
-	str_nb[i] = '\0';
-	nb = n;
-	while (i > 0 && nb > 0)
-	{
-		str_nb[--i] = '0' + (nb % 10);
-		nb = nb / 10;
-	}
-	return (str_nb);
+	return (tab);
 }

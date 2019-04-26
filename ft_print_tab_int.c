@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_print_tab_int.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/19 20:29:05 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/26 18:20:39 by fgarault         ###   ########.fr       */
+/*   Created: 2019/04/26 22:20:54 by fgarault          #+#    #+#             */
+/*   Updated: 2019/04/26 22:36:31 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-char		*ft_itoa(int n)
-{
-	char			*str_nb;
-	int				i;
-	unsigned int	nb;
+int		*ft_range(int min, int max);
 
-	i = ft_len_int(n);
-	if (!(str_nb = ft_strnew(i)))
-		return (NULL);
-	if (n <= 0)
+void	ft_print_tab_int(const int *tab)
+{
+	int		i;
+
+	i = 0;
+	while (tab[i])
 	{
-		if (n == 0)
-		{
-			str_nb[0] = '0';
-			return (str_nb);
-		}
-		str_nb[0] = '-';
-		n *= -1;
+		ft_putnbr(tab[i]);
+		ft_putchar('\t');
+		i++;
 	}
-	str_nb[i] = '\0';
-	nb = n;
-	while (i > 0 && nb > 0)
-	{
-		str_nb[--i] = '0' + (nb % 10);
-		nb = nb / 10;
-	}
-	return (str_nb);
 }
+int main()
+{
+	ft_print_tab_int(ft_range(5, 15));
+	return (0);
+}	
