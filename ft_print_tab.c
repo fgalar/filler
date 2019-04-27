@@ -6,7 +6,7 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 18:44:43 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/26 22:19:32 by fgarault         ###   ########.fr       */
+/*   Updated: 2019/04/27 11:44:54 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,4 @@ void	ft_print_tab(const char **s)
 		ft_putchar('\n');
 		i++;
 	}
-}
-
-int main()
-{
-	ft_print_tab((const char **)ft_strsplit("Bonjour les etudiants", ' '));
-	return (0);
 }

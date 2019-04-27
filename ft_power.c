@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_tab_int.c                                 :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/26 22:20:54 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/27 18:24:00 by fgarault         ###   ########.fr       */
+/*   Created: 2019/04/27 11:57:46 by fgarault          #+#    #+#             */
+/*   Updated: 2019/04/27 18:35:32 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_print_tab_int(int *tab, int size)
+int		ft_power(int nb, int power)
 {
-	int		i;
+	int		res;
 
-	i = 0;
-	while (size > i)
+	res = 1;
+	if (power == 0)
+		return (1);
+	if (power == 1)
+		return (nb);
+	while (power > 0)
 	{
-		ft_putnbr(tab[i]);
-		ft_putchar('\t');
-		i++;
+		res = res * nb;
+		power--;
 	}
+	return (res);
 }
