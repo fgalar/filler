@@ -6,14 +6,14 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 18:19:35 by fgarault          #+#    #+#             */
-/*   Updated: 2019/04/27 18:12:51 by fgarault         ###   ########.fr       */
+/*   Updated: 2019/06/20 17:06:36 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
-
+# define BUFF_SIZE 32
 typedef struct		s_list
 {
 	void			*content;
@@ -86,5 +86,6 @@ void				ft_print_tab(const char **s);
 void				ft_print_tab_int(int *tab, int size);
 int					*ft_sort_integer(int *tab, int size);
 int					ft_power(int nb, int power);
+int					get_next_line(const int fd, char **line);
 
 #endif
