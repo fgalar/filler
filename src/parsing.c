@@ -6,7 +6,7 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 13:10:32 by fgarault          #+#    #+#             */
-/*   Updated: 2019/06/19 20:31:23 by fgarault         ###   ########.fr       */
+/*   Updated: 2019/06/21 16:44:16 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,7 @@
 #include "../libft/libft.h"
 
 
-void 	parsing(int fd)
+void 	parsing(char *buffer, t_data *info)
 {
-	int		ret;
-	char	buffer[4096];
-	while ((ret = read(0, buffer, 4096)) > 0)
-		;
-	ft_putstr_fd(buffer, fd);
+	
 }

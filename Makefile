@@ -6,7 +6,7 @@
 #    By: fgarault <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/18 11:42:45 by fgarault          #+#    #+#              #
-#    Updated: 2019/06/20 16:37:25 by fgarault         ###   ########.fr        #
+#    Updated: 2019/06/21 14:59:54 by fgarault         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCDIR = ./srcs/
 LIBDIR = ./libft/
 
 SRCS = $(addprefix src/, \
-	   main.c parsing.c)
+	   main.c)
 OBJS = $(SRCS:.c=.o)
 INC = ./include/filler.h
 
@@ -54,6 +54,6 @@ fclean : clean
 
 re : fclean all
 
-play : $(NAME) 
-	@mv $(NAME) resources/players && cd resources && ./filler_vm -f maps/map00 -p1 ./players/superjeannot.filler -p2 ./players/fgarault.filler 
+player : $(NAME) 
+	@mv $(NAME) resources/players
 
