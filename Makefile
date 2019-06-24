@@ -6,7 +6,7 @@
 #    By: fgarault <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/18 11:42:45 by fgarault          #+#    #+#              #
-#    Updated: 2019/06/21 14:59:54 by fgarault         ###   ########.fr        #
+#    Updated: 2019/06/24 21:06:22 by fgarault         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCDIR = ./srcs/
 LIBDIR = ./libft/
 
 SRCS = $(addprefix src/, \
-	   main.c)
+	   main.c parsing.c)
 OBJS = $(SRCS:.c=.o)
 INC = ./include/filler.h
 

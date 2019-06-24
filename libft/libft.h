@@ -6,14 +6,14 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 18:19:35 by fgarault          #+#    #+#             */
-/*   Updated: 2019/06/20 17:06:36 by fgarault         ###   ########.fr       */
+/*   Updated: 2019/06/24 17:26:43 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
-# define BUFF_SIZE 32
+# define BUFF_SIZE 1
 typedef struct		s_list
 {
 	void			*content;
