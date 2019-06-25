@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filler.h                                           :+:      :+:    :+:   */
+/*   ft_is_space.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/19 13:12:51 by fgarault          #+#    #+#             */
-/*   Updated: 2019/06/25 19:07:26 by fgarault         ###   ########.fr       */
+/*   Created: 2019/06/25 15:05:55 by fgarault          #+#    #+#             */
+/*   Updated: 2019/06/25 15:09:21 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct	s_board
+int		ft_is_space(char *str)
 {
-	int			player;
-	char		pawn;
-	int			width;
-	int			height;
-	char		**map;
-
-}				t_data;
-
-void			parsing(t_data *info);
+	return(if (*str == ' '? 1 : 0));
+}
