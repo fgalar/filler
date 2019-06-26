@@ -13,10 +13,11 @@
 typedef struct	s_board
 {
 	int			player;
-	char		pawn;
+	char			pawn;
+	char			enemy;
 	int			width;
 	int			height;
-	char		**map;
+	char			**map;
 
 }				t_data;
 

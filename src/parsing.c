@@ -10,22 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <sys/uio.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include "../include/filler.h"
 #include "../libft/libft.h"
 
-/*void	get_map(t_data *info, char *line)
+void	get_map(t_data *info, char *line)
 {
-	(void)info;
-	while (get_next_line(0, &line))
+	int	y;
+	int	i;
+
+	y = 0;
+	i = 0;
+	if (!(info->map = (char**)malloc(sizeof(char*) * (info->height))))
+		return ;
+	if (!(info->map[y] = (char*)malloc(sizeof(char) * (info->width))))
+		return ;
+	while (get_next_line(0, &line) > 0 && ft_atoi(line) < info->height)
 	{
-		ft_putstr_fd(line, 2);
-		ft_putchar_fd('\n', 2);
+		i = 0;
+		while (ft_isdigit(line[i]))
+			i++;
+		i++;
+		info->map[y] = &line[i];
+		y++;
 	}
 }
-*/
+
 void	get_map_size(t_data *info, char *line)
 {
 	int		i;
@@ -36,10 +47,10 @@ void	get_map_size(t_data *info, char *line)
 	{
 		while (!(ft_isdigit(line[i])))
 			i++;
-		info->width = ft_atoi(&line[i - 1]);
+		info->height = ft_atoi(&line[i - 1]);
 		while (ft_isdigit(line[i]))
 			i++;
-		info->height = ft_atoi(&line[i]);
+		info->width = ft_atoi(&line[i]);
 	}
 }
 
@@ -49,11 +60,13 @@ void	get_player(t_data *info, char *line)
 	{
 		info->player = 1;
 		info->pawn = 'O';
+		info->enemy = 'X';
 	}
 	else
 	{
 		info->player = 2;
 		info->pawn = 'X';
+		info->enemy = 'O';
 	}
 }
 
@@ -70,7 +83,7 @@ void 	parsing(t_data *info)
 			get_player(info, line);
 		if (i == 1)
 			get_map_size(info, line);
-		if (i > 1)	
+		if (i == 2)	
 			get_map(info, line);
 		i++;
 	}
@@ -81,4 +94,16 @@ void 	parsing(t_data *info)
 	ft_putnbr_fd(info->width, 2);
 	ft_putchar_fd('\n', 2);
 	ft_putnbr_fd(info->height, 2);
+	int o;
+	int p;
+
+	o = 0;
+	p = 0;
+	while (o < (info->height + 1))
+	{
+		ft_putchar_fd('\n', 2);
+		ft_putstr_fd(info->map[o], 2);
+		o++;
+	}
+
 }
