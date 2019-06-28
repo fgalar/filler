@@ -15,9 +15,12 @@ typedef struct	s_board
 	int			player;
 	char			pawn;
 	char			enemy;
-	int			width;
 	int			height;
+	int			width;	
 	char			**map;
+	int			hght_p;
+	int			wdth_p;
+	char			**piece;
 
 }				t_data;
 
