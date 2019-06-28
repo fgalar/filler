@@ -24,7 +24,8 @@ LIBDIR = ./libft/
 
 SRCS = $(addprefix 	src/, \
 	   		main.c \
-			parsing.c)
+			parsing.c\
+			solving.c)
 OBJS = $(SRCS:.c=.o)
 INC = ./include/filler.h
 

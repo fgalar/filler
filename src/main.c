@@ -23,9 +23,11 @@ int		main(int ac, char **av)
 	(void)ac;
 	(void)av;
 	t_data *info;
+	t_solver *pos;
 
 	if (!(info = (t_data*)malloc(sizeof(t_data))))
 		return (-1);
 	parsing(info);
+	solve(info, &pos);
 	return (0);
 }

@@ -10,12 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <stdlib.h>
 #include "../include/filler.h"
 #include "../libft/libft.h"
-
-
 
 void	get_piece(t_data *info, char *line)
 {
