@@ -22,8 +22,9 @@ CFLAGS = -Wall -Wextra -Werror
 SRCDIR = ./srcs/
 LIBDIR = ./libft/
 
-SRCS = $(addprefix src/, \
-	   main.c parsing.c)
+SRCS = $(addprefix 	src/, \
+	   		main.c \
+			parsing.c)
 OBJS = $(SRCS:.c=.o)
 INC = ./include/filler.h
 
@@ -48,9 +49,10 @@ norme :
 
 clean :
 	rm -f $(OBJS) 
-	@make clean -C libft
+	@make clean -C libft 
 
 fclean : clean
+	@make fclean -C libft
 
 re : fclean all
 

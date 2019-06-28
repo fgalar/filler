@@ -15,21 +15,6 @@
 #include "../include/filler.h"
 #include "../libft/libft.h"
 
-/*void	get_piece(t_data *info, char *line)
-{
-	int	i;
-
-	i = 0;
-	if (ft_strstr(line, "Piece"))
-	{
-		while (!(ft_isdigit(line[i])))
-			i++;
-		info->hght_p = ft_atoi(&line[i]);
-		while(ft_isdigit(line[i]))
-			i++;
-		info->wdth_p = ft_atoi(&line[i]);
-	}
-}*/
 void	get_size(t_data *info, char *line)
 {
 	int		i;
