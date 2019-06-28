@@ -15,7 +15,7 @@
 #include "../include/filler.h"
 #include "../libft/libft.h"
 
-void	get_piece(t_data *info, char *line)
+/*void	get_piece(t_data *info, char *line)
 {
 	int	i;
 
@@ -28,6 +28,29 @@ void	get_piece(t_data *info, char *line)
 		while(ft_isdigit(line[i]))
 			i++;
 		info->wdth_p = ft_atoi(&line[i]);
+	}
+}*/
+void	get_size(t_data *info, char *line)
+{
+	int		i;
+	int		obj_hght;
+	int		obj_wdth;
+	i = 0;
+	while (!(ft_isdigit(line[i])))
+		i++;
+	obj_hght = ft_atoi(&line[i]);
+	while (ft_isdigit(line[i]))
+		i++;
+	obj_wdth = ft_atoi(&line[i]);
+	if (ft_strstr(line, "Plateau"))
+	{
+		info->height = obj_hght;
+		info->width = obj_wdth;
+	}
+	if (ft_strstr(line, "Piece"))
+	{
+		info->hght_p = obj_hght;
+		info->wdth_p = obj_wdth;
 	}
 }
 
@@ -50,24 +73,10 @@ void	get_map(t_data *info, char *line)
 		info->map[y] = &line[x];
 		y++;
 	}
-	get_piece(info, line);
+	get_size(info, line);
 }
 
-void	get_map_size(t_data *info, char *line)
-{
-	int		i;
 
-	i = 0;
-	if (ft_strstr(line, "Plateau"))
-	{
-		while (!(ft_isdigit(line[i])))
-			i++;
-		info->height = ft_atoi(&line[i]);
-		while (ft_isdigit(line[i]))
-			i++;
-		info->width = ft_atoi(&line[i]);
-	}
-}
 
 void	get_player(t_data *info, char *line)
 {
@@ -97,7 +106,7 @@ void 	parsing(t_data *info)
 		if (i == 0)
 			get_player(info, line);
 		if (i == 1)
-			get_map_size(info, line);
+			get_size(info, line);
 		if (i == 2)	
 			get_map(info, line);
 		i++;
