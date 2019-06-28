@@ -15,27 +15,21 @@
 #include "../include/filler.h"
 #include "../libft/libft.h"
 
-void	get_size(t_data *info, char *line)
+
+
+void	get_piece(t_data *info, char *line)
 {
-	int		i;
-	int		obj_hght;
-	int		obj_wdth;
-	i = 0;
-	while (!(ft_isdigit(line[i])))
-		i++;
-	obj_hght = ft_atoi(&line[i]);
-	while (ft_isdigit(line[i]))
-		i++;
-	obj_wdth = ft_atoi(&line[i]);
-	if (ft_strstr(line, "Plateau"))
+	int	y;
+	
+	y = 0;
+	if (!(info->piece = (char**)malloc(sizeof(char*) * (info->hght_p))))
+		return ;
+	if (!(info->piece[y] = (char*)malloc(sizeof(char) * (info->wdth_p))))
+		return ;
+	while (get_next_line(0, &line) && y < info->hght_p)
 	{
-		info->height = obj_hght;
-		info->width = obj_wdth;
-	}
-	if (ft_strstr(line, "Piece"))
-	{
-		info->hght_p = obj_hght;
-		info->wdth_p = obj_wdth;
+		info->piece[y] = line;
+		y++;
 	}
 }
 
@@ -52,6 +46,8 @@ void	get_map(t_data *info, char *line)
 	while (get_next_line(0, &line) > 0 && y < info->height)
 	{
 		x = 0;
+		if (ft_isdigit(line[4]))
+			get_next_line(0, &line);
 		while (ft_isdigit(line[x]))
 			x++;
 		x++;
@@ -61,7 +57,32 @@ void	get_map(t_data *info, char *line)
 	get_size(info, line);
 }
 
+void	get_size(t_data *info, char *line)
+{
+	int		i;
+	int		obj_hght;
+	int		obj_wdth;
 
+	i = 0;
+	while (!(ft_isdigit(line[i])))
+		i++;
+	obj_hght = ft_atoi(&line[i]);
+	while (ft_isdigit(line[i]))
+		i++;
+	obj_wdth = ft_atoi(&line[i]);
+	if (ft_strstr(line, "Plateau"))
+	{
+		info->height = obj_hght;
+		info->width = obj_wdth;
+		get_map(info, line);
+	}
+	if (ft_strstr(line, "Piece"))
+	{
+		info->hght_p = obj_hght;
+		info->wdth_p = obj_wdth;
+		get_piece(info, line);
+	}
+}
 
 void	get_player(t_data *info, char *line)
 {
@@ -90,10 +111,8 @@ void 	parsing(t_data *info)
 	{	
 		if (i == 0)
 			get_player(info, line);
-		if (i == 1)
+		else
 			get_size(info, line);
-		if (i == 2)	
-			get_map(info, line);
 		i++;
 	}
 	/*************test***************/
@@ -113,10 +132,20 @@ void 	parsing(t_data *info)
 		ft_putstr_fd(info->map[o], 2);
 		o++;
 	}
-	
+
 	ft_putchar_fd('\n', 2);
 	ft_putnbr_fd(info->hght_p, 2);
 	ft_putchar_fd('\t', 2);
 	ft_putnbr_fd(info->wdth_p, 2);
+
+	int p;
+
+	p = 0;
+	while (p < info->hght_p)
+	{
+		ft_putchar_fd('\n', 2);
+		ft_putstr_fd(info->piece[p], 2);
+		p++;
+	}
 
 }

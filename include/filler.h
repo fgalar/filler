@@ -25,3 +25,4 @@ typedef struct	s_board
 }				t_data;
 
 void			parsing(t_data *info);
+void			get_size(t_data *info, char *line);
