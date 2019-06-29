@@ -22,9 +22,9 @@ CFLAGS = -Wall -Wextra -Werror
 SRCDIR = ./srcs/
 LIBDIR = ./libft/
 
-SRCS = $(addprefix 	src/, \
-	   		main.c \
-			parsing.c\
+SRCS = $(addprefix 	src/, 		\
+	   		main.c 		\
+			parsing.c	\
 			solving.c)
 OBJS = $(SRCS:.c=.o)
 INC = ./include/filler.h
@@ -53,6 +53,7 @@ clean :
 	@make clean -C libft 
 
 fclean : clean
+	rm -f $(NAME)
 	@make fclean -C libft
 
 re : fclean all

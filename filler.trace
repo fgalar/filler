@@ -1,5 +1,3 @@
-seed = 2358
+seed = 8314
 O: timedout
-resources/players/abanlin.filler won
-Score:
-0AGAINST145
+resources/players/fgarault.filler: Segfault at 0

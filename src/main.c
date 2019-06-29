@@ -27,7 +27,8 @@ int		main(int ac, char **av)
 
 	if (!(info = (t_data*)malloc(sizeof(t_data))))
 		return (-1);
+	pos = NULL;
 	parsing(info);
-	solve(info, &pos);
+	solve(info, pos);
 	return (0);
 }
