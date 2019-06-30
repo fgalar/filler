@@ -26,14 +26,9 @@ int	can_put(t_data *info, t_solver *pos)
 		i = 0;
 		while (i + pos->y < info->width && i < info->wdth_p)
 		{	
-			if (info->map[pos->y + j][pos->x + i] != '.' 
-				&& info->piece[j][i] == info->pawn)
+			if (info->map[pos->y + j][pos->x + i] == info->enemy && info->piece[j][i] == '*')
 				return (0);
-			if (info->map[pos->y + j][pos->x + i] == info->enemy 
-				&& info->piece[j][i] == info->pawn)
-				return (0);
-			if (info->map[pos->y + j][pos->x + i] == info->pawn
-				&& info->piece[j][i] == info->pawn)
+			if (info->map[pos->y + j][pos->x + i] == info->pawn && info->piece[j][i] == '*')
 				nb_pawn++;
 			i++;
 		}
@@ -44,25 +39,36 @@ int	can_put(t_data *info, t_solver *pos)
 
 void	send_position(t_solver *pos)
 {
-	ft_putchar_fd(pos->x, 1);
+	ft_putstr_fd(ft_itoa(pos->y), 1);
 	ft_putchar_fd(' ', 1);
-	ft_putchar_fd(pos->y, 1);
+	ft_putstr_fd(ft_itoa(pos->x), 1);
 	ft_putchar_fd('\n', 1);
+
+	BK_N;
+	STR("X = ", 2);
+	NBR(pos->x, 2);
+	BK_N;
+	STR("Y = ", 2);
+	NBR(pos->y, 2);
+	CHAR('\n', 2);
+
 }
 
-void	solve(t_data *info, t_solver *pos)
+int	solve(t_data *info, t_solver *pos)
 {
-	
-	ft_putstr_fd("coucou", 2);
 	while (pos->y < info->height)
 	{	
 		pos->x = 0;
 		while (pos->x < info->width)
 		{
 			if (can_put(info, pos))
+			{
 				send_position(pos);
+				return (1);
+			}
 			pos->x++;
 		}
 		pos->y++;
 	}
+	return (0);
 }

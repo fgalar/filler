@@ -23,11 +23,26 @@ void	get_piece(t_data *info, char *line)
 		return ;
 	if (!(info->piece[y] = (char*)malloc(sizeof(char) * (info->wdth_p))))
 		return ;
-	while (get_next_line(0, &line) && y < info->hght_p)
+	while (y < info->hght_p)
 	{
+		get_next_line(0, &line); 
 		info->piece[y] = line;
 		y++;
 	}
+}
+
+void	get_size_piece(t_data *info, char *line)
+{
+	int	i;
+
+	i = 0;
+	while (!(ft_isdigit(line[i])))
+		i++;
+	info->hght_p = ft_atoi(&line[i]);
+	while (ft_isdigit(line[i]))
+		i++;
+	info->wdth_p = ft_atoi(&line[i]);
+	get_piece(info, line);
 }
 
 void	get_map(t_data *info, char *line)
@@ -40,8 +55,9 @@ void	get_map(t_data *info, char *line)
 		return ;
 	if (!(info->map[y] = (char*)malloc(sizeof(char) * (info->width))))
 		return ;
-	while (get_next_line(0, &line) > 0 && y < info->height)
+	while (y < info->height)
 	{
+		get_next_line(0, &line);
 		x = 0;
 		if (ft_isdigit(line[4]))
 			get_next_line(0, &line);
@@ -51,34 +67,22 @@ void	get_map(t_data *info, char *line)
 		info->map[y] = &line[x];
 		y++;
 	}
-	get_size(info, line);
+	get_next_line(0, &line);
+	get_size_piece(info, line);
 }
 
-void	get_size(t_data *info, char *line)
+void	get_size_map(t_data *info, char *line)
 {
 	int		i;
-	int		obj_hght;
-	int		obj_wdth;
 
 	i = 0;
 	while (!(ft_isdigit(line[i])))
 		i++;
-	obj_hght = ft_atoi(&line[i]);
+	info->height = ft_atoi(&line[i]);
 	while (ft_isdigit(line[i]))
 		i++;
-	obj_wdth = ft_atoi(&line[i]);
-	if (ft_strstr(line, "Plateau"))
-	{
-		info->height = obj_hght;
-		info->width = obj_wdth;
-		get_map(info, line);
-	}
-	if (ft_strstr(line, "Piece"))
-	{
-		info->hght_p = obj_hght;
-		info->wdth_p = obj_wdth;
-		get_piece(info, line);
-	}
+	info->width = ft_atoi(&line[i]);
+	get_map(info, line);
 }
 
 void	get_player(t_data *info, char *line)
@@ -95,23 +99,18 @@ void	get_player(t_data *info, char *line)
 		info->pawn = 'X';
 		info->enemy = 'O';
 	}
+	get_next_line(0, &line);
+	get_size_map(info, line);
 }
 
 void 	parsing(t_data *info)
 {
 	(void)info;
 	char	*line;
-	int		i;
 	
-	i = 0;
-	while (get_next_line(0, &line) > 0)
-	{	
-		if (i == 0)
-			get_player(info, line);
-		else
-			get_size(info, line);
-		i++;
-	}
+	get_next_line(0, &line);
+	get_player(info, line);
+
 	/*************test***************/
 	ft_putnbr_fd(info->player, 2);
 	ft_putchar_fd('\t', 2);
