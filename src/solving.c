@@ -41,7 +41,7 @@ int	can_put(t_data *info, t_solver *pos)
 int	solve(t_data *info, t_solver *pos)
 {
 	
-	STR("HEIGHT");
+	/*STR("HEIGHT");
 	NBR(info->height);
 	STR("WIDTH");
 	NBR(info->width);
@@ -50,11 +50,11 @@ int	solve(t_data *info, t_solver *pos)
 	NBR(info->hght_p);
 	STR("WIDTH PIECE	");
 	NBR(info->wdth_p);
-	BK_N;
+	BK_N;*/
 	pos->y = 0;
 	while (pos->y + info->hght_p  <= info->height)
 	{	
-		pos->x = 0;
+		pos->y == 0 ? (pos->x = 1) : (pos->x = 0);  
 		while (pos->x + info->wdth_p <= info->width)
 		{
 			if (can_put(info, pos))
@@ -67,10 +67,14 @@ int	solve(t_data *info, t_solver *pos)
 				return (1);
 			}
 			pos->x++;
-			NBR(pos->x++);
 		}
 		pos->y++;
 	}
-	ft_putstr("0 0\n");
+	pos->y = 0;
+	pos->x = 0;
+	ft_putstr(ft_itoa(pos->y));
+	ft_putchar_fd(' ', 1);
+	ft_putstr_fd(ft_itoa(pos->x), 1);
+	ft_putchar_fd('\n', 1);
 	return (0);
 }

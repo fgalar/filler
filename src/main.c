@@ -34,7 +34,7 @@ int		main(int ac, char **av)
 	{
 		get_size_map(info, line);
 		get_map(info, line);
-		display(info);
+	//	display(info);
 		solve(info, pos);
 
 	/*	while (y < info->height)
@@ -51,7 +51,8 @@ int		main(int ac, char **av)
 			y++;
 		}
 		free(info->piece);*/
-
+		if (pos->y == 0 && pos->x ==0)
+			break ;
 	}
 	free(info);
 	return (0);

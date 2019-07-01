@@ -108,10 +108,9 @@ void	get_player(t_data *info, char *line)
 		info->enemy = 'O';
 	}
 }
-
+/*
 void 	display(t_data *info)
 {
-	/*************test***************/
 	STR("PLAYER\n");
 	NBR(info->player);
 	CHAR('\t');
@@ -148,4 +147,4 @@ void 	display(t_data *info)
 		p++;
 	}
 
-}
+}*/
