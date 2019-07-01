@@ -25,7 +25,8 @@ void	get_piece(t_data *info, char *line)
 		return ;
 	while (y < info->hght_p)
 	{
-		get_next_line(0, &line); 
+		if (!(get_next_line(0, &line)))
+			return ;
 		info->piece[y] = line;
 		y++;
 	}
@@ -36,6 +37,8 @@ void	get_size_piece(t_data *info, char *line)
 	int	i;
 
 	i = 0;
+	if (!(get_next_line(0, &line)))
+		return ;
 	while (!(ft_isdigit(line[i])))
 		i++;
 	info->hght_p = ft_atoi(&line[i]);
@@ -51,13 +54,16 @@ void	get_map(t_data *info, char *line)
 	int	x;
 
 	y = 0;
+	//get_next_line(0, &line);
+	//STR(line, 2);
 	if (!(info->map = (char**)malloc(sizeof(char*) * (info->height))))
 		return ;
 	if (!(info->map[y] = (char*)malloc(sizeof(char) * (info->width))))
 		return ;
 	while (y < info->height)
 	{
-		get_next_line(0, &line);
+		if (!(get_next_line(0, &line)))
+			return ;
 		x = 0;
 		if (ft_isdigit(line[4]))
 			get_next_line(0, &line);
@@ -67,7 +73,6 @@ void	get_map(t_data *info, char *line)
 		info->map[y] = &line[x];
 		y++;
 	}
-	get_next_line(0, &line);
 	get_size_piece(info, line);
 }
 
@@ -76,17 +81,20 @@ void	get_size_map(t_data *info, char *line)
 	int		i;
 
 	i = 0;
+	if (!(get_next_line(0, &line)))
+		return ;
 	while (!(ft_isdigit(line[i])))
 		i++;
 	info->height = ft_atoi(&line[i]);
 	while (ft_isdigit(line[i]))
 		i++;
 	info->width = ft_atoi(&line[i]);
-	get_map(info, line);
 }
 
 void	get_player(t_data *info, char *line)
 {
+	if (!(get_next_line(0, &line)))
+		return ;
 	if (ft_strstr(line, "p1"))
 	{
 		info->player = 1;
@@ -99,48 +107,44 @@ void	get_player(t_data *info, char *line)
 		info->pawn = 'X';
 		info->enemy = 'O';
 	}
-	get_next_line(0, &line);
-	get_size_map(info, line);
 }
 
-void 	parsing(t_data *info)
+void 	display(t_data *info)
 {
-	(void)info;
-	char	*line;
-	
-	get_next_line(0, &line);
-	get_player(info, line);
-
 	/*************test***************/
-	ft_putnbr_fd(info->player, 2);
-	ft_putchar_fd('\t', 2);
-	ft_putchar_fd(info->pawn, 2);
-	ft_putchar_fd('\n', 2);
-	ft_putnbr_fd(info->height, 2);
-	ft_putchar_fd('\t', 2);
-	ft_putnbr_fd(info->width, 2);
+	STR("PLAYER\n");
+	NBR(info->player);
+	CHAR('\t');
+	CHAR(info->pawn);
+	CHAR('\n');
+	
+	STR("TABLEAU\n");
+	NBR(info->height);
+	CHAR('\t');
+	NBR(info->width);
+	
 	int o;
 
 	o = 0;
 	while (o < info->height)
 	{
-		ft_putchar_fd('\n', 2);
-		ft_putstr_fd(info->map[o], 2);
+		CHAR('\n');
+		STR(info->map[o]);
 		o++;
 	}
 
-	ft_putchar_fd('\n', 2);
-	ft_putnbr_fd(info->hght_p, 2);
-	ft_putchar_fd('\t', 2);
-	ft_putnbr_fd(info->wdth_p, 2);
+	CHAR('\n');
+	NBR(info->hght_p);
+	CHAR('\t');
+	NBR(info->wdth_p);
 
 	int p;
 
 	p = 0;
 	while (p < info->hght_p)
 	{
-		ft_putchar_fd('\n', 2);
-		ft_putstr_fd(info->piece[p], 2);
+		CHAR('\n');
+		STR(info->piece[p]);
 		p++;
 	}
 

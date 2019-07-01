@@ -1,4 +1,5 @@
-seed = 3953
-resources/players/superjeannot.filler won
+seed = 9066
+resources/players/fgarault.filler: Segfault at 49
+resources/players/hcao.filler won
 Score:
-1AGAINST149
+63AGAINST49

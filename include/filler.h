@@ -14,9 +14,9 @@
 # define bool int
 # define TAB ft_putchar_fd('\t', 2)
 # define BK_N ft_putchar_fd('\n', 2)
-# define NBR ft_putnbr_fd
-# define STR ft_putstr_fd
-# define CHAR ft_putchar_fd
+# define NBR(x) ft_putnbr_fd(x, 2)
+# define STR(x) ft_putstr_fd(x, 2)
+# define CHAR(x) ft_putchar_fd(x, 2)
 
 typedef struct			s_data
 {
@@ -42,9 +42,10 @@ typedef struct			s_solver
 
 void				parsing(t_data *info);
 void				get_player(t_data *info, char *line);
+void				get_size_map(t_data *info, char *line);
 void				get_map(t_data *info,  char *line);
 
-
+void				display(t_data *info); ///// FT_DE_TEST
 int				solve(t_data *info, t_solver *pos);
 
 #endif

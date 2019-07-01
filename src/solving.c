@@ -24,7 +24,7 @@ int	can_put(t_data *info, t_solver *pos)
 	while (j + pos->y < info->height && j < info->hght_p)		
 	{								
 		i = 0;
-		while (i + pos->y < info->width && i < info->wdth_p)
+		while (i + pos->x < info->width && i < info->wdth_p)
 		{	
 			if (info->map[pos->y + j][pos->x + i] == info->enemy && info->piece[j][i] == '*')
 				return (0);
@@ -37,38 +37,40 @@ int	can_put(t_data *info, t_solver *pos)
 	return (nb_pawn != 1 ? 0 : 1); 
 }
 
-void	send_position(t_solver *pos)
-{
-	ft_putstr_fd(ft_itoa(pos->y), 1);
-	ft_putchar_fd(' ', 1);
-	ft_putstr_fd(ft_itoa(pos->x), 1);
-	ft_putchar_fd('\n', 1);
-
-	BK_N;
-	STR("X = ", 2);
-	NBR(pos->x, 2);
-	BK_N;
-	STR("Y = ", 2);
-	NBR(pos->y, 2);
-	CHAR('\n', 2);
-
-}
-
+#include <stdio.h>
 int	solve(t_data *info, t_solver *pos)
 {
-	while (pos->y < info->height)
+	
+	STR("HEIGHT");
+	NBR(info->height);
+	STR("WIDTH");
+	NBR(info->width);
+	BK_N;
+	STR("HEIGHT PIECE	");
+	NBR(info->hght_p);
+	STR("WIDTH PIECE	");
+	NBR(info->wdth_p);
+	BK_N;
+	pos->y = 0;
+	while (pos->y + info->hght_p  <= info->height)
 	{	
 		pos->x = 0;
-		while (pos->x < info->width)
+		while (pos->x + info->wdth_p <= info->width)
 		{
 			if (can_put(info, pos))
 			{
-				send_position(pos);
+				
+				ft_putstr(ft_itoa(pos->y));
+				ft_putchar_fd(' ', 1);
+				ft_putstr_fd(ft_itoa(pos->x), 1);
+				ft_putchar_fd('\n', 1);
 				return (1);
 			}
 			pos->x++;
+			NBR(pos->x++);
 		}
 		pos->y++;
 	}
+	ft_putstr("0 0\n");
 	return (0);
 }
