@@ -34,8 +34,18 @@ int		main(int ac, char **av)
 	{
 		get_size_map(info, line);
 		get_map(info, line);
-	//	display(info);
+		
+		display(info);
+		
+		skip_points(info, pos);
 		solve(info, pos);
+		/*****test**de**skip_points*/
+		STR("Y EN MOINS : \t");
+		NBR(pos->y_less);
+		BK_N;
+		STR("X EN MOINS : \t");
+		NBR(pos->x_less);
+		BK_N;
 
 	/*	while (y < info->height)
 		{

@@ -13,13 +13,43 @@
 #include "../include/filler.h"
 #include "../libft/libft.h"
 
+void	skip_points(t_data *info, t_solver *pos)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	i = 0;
+	while (j < info->hght_p && info->piece[j][i] == '.')
+	{
+		j++;
+		if (j == info->hght_p)
+		{
+			j = 0;
+			i++;
+		}
+	}
+	pos->x_less = i * -1;
+	j = 0;
+	while (i < info->wdth_p && info->piece[j][i] == '.')
+	{
+		i++;
+		if (i == info->wdth_p)
+		{
+			i = 0;
+			j++;
+		}
+	}
+	pos->y_less = j * -1;
+}
+
 int	can_put(t_data *info, t_solver *pos)
 {
 	int	i;
 	int	j;
 	bool	nb_pawn;
 
-	j= 0;
+	j = 0;
 	nb_pawn = 0;
 	while (j + pos->y < info->height && j < info->hght_p)		
 	{								
@@ -37,29 +67,16 @@ int	can_put(t_data *info, t_solver *pos)
 	return (nb_pawn != 1 ? 0 : 1); 
 }
 
-#include <stdio.h>
 int	solve(t_data *info, t_solver *pos)
 {
-	
-	/*STR("HEIGHT");
-	NBR(info->height);
-	STR("WIDTH");
-	NBR(info->width);
-	BK_N;
-	STR("HEIGHT PIECE	");
-	NBR(info->hght_p);
-	STR("WIDTH PIECE	");
-	NBR(info->wdth_p);
-	BK_N;*/
 	pos->y = 0;
-	while (pos->y + info->hght_p  <= info->height)
+	while (pos->y + info->hght_p <= info->height)
 	{	
-		pos->y == 0 ? (pos->x = 1) : (pos->x = 0);  
+		pos->y == 0 ? (pos->x = 0) : (pos->x = 0);  
 		while (pos->x + info->wdth_p <= info->width)
 		{
 			if (can_put(info, pos))
 			{
-				
 				ft_putstr(ft_itoa(pos->y));
 				ft_putchar_fd(' ', 1);
 				ft_putstr_fd(ft_itoa(pos->x), 1);

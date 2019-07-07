@@ -54,8 +54,6 @@ void	get_map(t_data *info, char *line)
 	int	x;
 
 	y = 0;
-	//get_next_line(0, &line);
-	//STR(line, 2);
 	if (!(info->map = (char**)malloc(sizeof(char*) * (info->height))))
 		return ;
 	if (!(info->map[y] = (char*)malloc(sizeof(char) * (info->width))))
@@ -108,7 +106,7 @@ void	get_player(t_data *info, char *line)
 		info->enemy = 'O';
 	}
 }
-/*
+
 void 	display(t_data *info)
 {
 	STR("PLAYER\n");
@@ -123,7 +121,6 @@ void 	display(t_data *info)
 	NBR(info->width);
 	
 	int o;
-
 	o = 0;
 	while (o < info->height)
 	{
@@ -131,14 +128,11 @@ void 	display(t_data *info)
 		STR(info->map[o]);
 		o++;
 	}
-
 	CHAR('\n');
 	NBR(info->hght_p);
 	CHAR('\t');
 	NBR(info->wdth_p);
-
 	int p;
-
 	p = 0;
 	while (p < info->hght_p)
 	{
@@ -146,5 +140,5 @@ void 	display(t_data *info)
 		STR(info->piece[p]);
 		p++;
 	}
-
-}*/
+	BK_N;
+}

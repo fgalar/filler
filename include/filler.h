@@ -38,6 +38,9 @@ typedef struct			s_solver
 {
 	int	y;
 	int	x;
+	
+	int	y_less;
+	int	x_less;
 }				t_solver;
 
 void				parsing(t_data *info);
@@ -46,6 +49,7 @@ void				get_size_map(t_data *info, char *line);
 void				get_map(t_data *info,  char *line);
 
 void				display(t_data *info); ///// FT_DE_TEST
+void				skip_points(t_data *info, t_solver *pos);
 int				solve(t_data *info, t_solver *pos);
 
 #endif
