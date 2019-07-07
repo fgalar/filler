@@ -29,7 +29,7 @@ void	skip_points(t_data *info, t_solver *pos)
 			i++;
 		}
 	}
-	pos->x_less = i * -1;
+	pos->x_less = i;
 	j = 0;
 	while (i < info->wdth_p && info->piece[j][i] == '.')
 	{
@@ -40,43 +40,54 @@ void	skip_points(t_data *info, t_solver *pos)
 			j++;
 		}
 	}
-	pos->y_less = j * -1;
+	pos->y_less = j;
 }
 
 int	can_put(t_data *info, t_solver *pos)
 {
 	int	i;
 	int	j;
-	bool	nb_pawn;
+	bool	nb_contact;
 
-	j = 0;
-	nb_pawn = 0;
+	j = pos->y_less;
+	nb_contact = 0;
 	while (j + pos->y < info->height && j < info->hght_p)		
 	{								
-		i = 0;
+		i = pos->x_less;
 		while (i + pos->x < info->width && i < info->wdth_p)
 		{	
 			if (info->map[pos->y + j][pos->x + i] == info->enemy && info->piece[j][i] == '*')
 				return (0);
 			if (info->map[pos->y + j][pos->x + i] == info->pawn && info->piece[j][i] == '*')
-				nb_pawn++;
+				nb_contact++;
 			i++;
 		}
 		j++;
 	}
-	return (nb_pawn != 1 ? 0 : 1); 
+	return (nb_contact == 1 ? 1 : 0); 
 }
 
 int	solve(t_data *info, t_solver *pos)
 {
-	pos->y = 0;
-	while (pos->y + info->hght_p <= info->height)
+	
+	pos->y = -(pos->y_less);
+	while (pos->y + info->hght_p < info->height)
 	{	
-		pos->y == 0 ? (pos->x = 0) : (pos->x = 0);  
-		while (pos->x + info->wdth_p <= info->width)
-		{
+		pos->x = -(pos->x_less);
+	
+		pos->y == 0 ? (pos->x = 1) : (pos->x = 0);  
+		while (pos->x + info->wdth_p < info->width)
+		{	
 			if (can_put(info, pos))
-			{
+			{	
+				STR("try pos y to :\t");
+				NBR(pos->y);
+				BK_N;
+
+				STR("try pos x to:  ");
+				NBR(pos->x);
+				BK_N;
+
 				ft_putstr(ft_itoa(pos->y));
 				ft_putchar_fd(' ', 1);
 				ft_putstr_fd(ft_itoa(pos->x), 1);
