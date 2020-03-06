@@ -6,7 +6,7 @@
 #    By: fgarault <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/07 17:50:20 by fgarault          #+#    #+#              #
-#    Updated: 2019/06/20 16:34:59 by fgarault         ###   ########.fr        #
+#    Updated: 2020/03/04 17:37:44 by fgarault         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,23 +29,24 @@ SRCS = 	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c	\
 		ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c	ft_lstmap.c	\
 		ft_len_int.c ft_print_tab.c ft_print_tab_int.c ft_power.c 		\
 		ft_sort_integer.c get_next_line.c
+
 OBJS = $(SRCS:.c=.o)
 INCLUDE = libft.h
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	ar rcs $(NAME) $^
+	@ar rcs $(NAME) $^
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $(SRCS) -I $(INCLUDE)
+	@$(CC) $(CFLAGS) -c $(SRCS) -I $(INCLUDE)
 
 norme :
-	 @norminette -R CheckForbiddenSourceHeader $(SRCS) $(INCLUDE)
+	@norminette -R CheckForbiddenSourceHeader $(SRCS) $(INCLUDE)
 clean :
-	rm -rf $(OBJS)
+	@rm -rf $(OBJS)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all

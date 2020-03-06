@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   !!!!!!!HEADER A REGERER  A L   ECCOOOOOLE  !!!     :+:      :+:    :+:   */
+/*   solving.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/19 13:10:32 by fgarault          #+#    #+#             */
-/*   Updated: 2019/06/25 22:20:42 by fgarault         ###   ########.fr       */
+/*   Created: 2020/03/04 18:32:39 by fgarault          #+#    #+#             */
+/*   Updated: 2020/03/05 17:21:03 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/filler.h"
-#include "../libft/libft.h"
 
 void	skip_points(t_data *info, t_solver *pos)
 {
@@ -41,6 +40,7 @@ void	skip_points(t_data *info, t_solver *pos)
 		}
 	}
 	pos->y_less = j;
+	heat_map(info, pos);
 }
 
 int	can_put(t_data *info, t_solver *pos)
@@ -80,14 +80,6 @@ int	solve(t_data *info, t_solver *pos)
 		{	
 			if (can_put(info, pos))
 			{	
-				STR("try pos y to :\t");
-				NBR(pos->y);
-				BK_N;
-
-				STR("try pos x to:  ");
-				NBR(pos->x);
-				BK_N;
-
 				ft_putstr(ft_itoa(pos->y));
 				ft_putchar_fd(' ', 1);
 				ft_putstr_fd(ft_itoa(pos->x), 1);

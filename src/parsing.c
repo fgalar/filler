@@ -6,22 +6,20 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 13:10:32 by fgarault          #+#    #+#             */
-/*   Updated: 2019/06/25 22:20:42 by fgarault         ###   ########.fr       */
+/*   Updated: 2020/03/05 17:20:09 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "../include/filler.h"
-#include "../libft/libft.h"
 
 void	get_piece(t_data *info, char *line)
 {
 	int	y;
 	
 	y = 0;
-	if (!(info->piece = (char**)malloc(sizeof(char*) * (info->hght_p))))
+	if (!(info->piece = (char**)malloc(sizeof(char*) * (info->hght_p + 1))))
 		return ;
-	if (!(info->piece[y] = (char*)malloc(sizeof(char) * (info->wdth_p))))
+	if (!(info->piece[y] = (char*)malloc(sizeof(char) * (info->wdth_p + 1))))
 		return ;
 	while (y < info->hght_p)
 	{
@@ -54,9 +52,9 @@ void	get_map(t_data *info, char *line)
 	int	x;
 
 	y = 0;
-	if (!(info->map = (char**)malloc(sizeof(char*) * (info->height))))
+	if (!(info->map = (char**)malloc(sizeof(char*) * (info->height + 1))))
 		return ;
-	if (!(info->map[y] = (char*)malloc(sizeof(char) * (info->width))))
+	if (!(info->map[y] = (char*)malloc(sizeof(char) * (info->width + 1))))
 		return ;
 	while (y < info->height)
 	{

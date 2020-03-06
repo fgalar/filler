@@ -6,13 +6,11 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 13:23:32 by fgarault          #+#    #+#             */
-/*   Updated: 2019/06/24 21:06:20 by fgarault         ###   ########.fr       */
+/*   Updated: 2020/03/04 17:52:44 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "../include/filler.h"
-#include "../libft/libft.h"
 
 int		main(int ac, char **av)
 {
@@ -35,17 +33,10 @@ int		main(int ac, char **av)
 		get_size_map(info, line);
 		get_map(info, line);
 		
-		display(info);
+		//display(info);
 		
 		skip_points(info, pos);
 		solve(info, pos);
-		/*****test**de**skip_points*/
-		STR("Y EN MOINS : \t");
-		NBR(pos->y_less);
-		BK_N;
-		STR("X EN MOINS : \t");
-		NBR(pos->x_less);
-		BK_N;
 
 	/*	while (y < info->height)
 		{
