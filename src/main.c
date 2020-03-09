@@ -6,7 +6,7 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 13:23:32 by fgarault          #+#    #+#             */
-/*   Updated: 2020/03/04 17:52:44 by fgarault         ###   ########.fr       */
+/*   Updated: 2020/03/07 12:15:37 by fanny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		main(int ac, char **av)
 		get_size_map(info, line);
 		get_map(info, line);
 		
-		//display(info);
+	//	display(info);
 		
 		skip_points(info, pos);
 		solve(info, pos);

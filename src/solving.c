@@ -6,7 +6,7 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:32:39 by fgarault          #+#    #+#             */
-/*   Updated: 2020/03/05 17:21:03 by fgarault         ###   ########.fr       */
+/*   Updated: 2020/03/06 17:30:36 by fanny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ void	skip_points(t_data *info, t_solver *pos)
 {
 	int	i;
 	int	j;
+	char score;
 
 	j = 0;
 	i = 0;
+	score = '9';
 	while (j < info->hght_p && info->piece[j][i] == '.')
 	{
 		j++;
@@ -40,7 +42,8 @@ void	skip_points(t_data *info, t_solver *pos)
 		}
 	}
 	pos->y_less = j;
-	heat_map(info, pos);
+	score_map(info, pos);
+	
 }
 
 int	can_put(t_data *info, t_solver *pos)

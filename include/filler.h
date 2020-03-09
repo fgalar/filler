@@ -6,7 +6,7 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 13:12:51 by fgarault          #+#    #+#             */
-/*   Updated: 2020/03/05 14:36:12 by fgarault         ###   ########.fr       */
+/*   Updated: 2020/03/06 17:30:52 by fanny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -45,7 +45,7 @@ typedef struct			s_solver
 	int					y_less;
 	int					x_less;
 
-	char				**heat_m;
+	int					**heat_m;
 }						t_solver;
 
 void				parsing(t_data *info);
@@ -57,5 +57,5 @@ void				display(t_data *info); ///// FT_DE_TEST
 void				skip_points(t_data *info, t_solver *pos);
 int					solve(t_data *info, t_solver *pos);
 
-void				heat_map(t_data *info, t_solver *mapping);
+void				score_map(t_data *info, t_solver *mapping);
 #endif

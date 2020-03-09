@@ -1,5 +1,7 @@
-seed = 9448
-resources/players/fgarault.filler: Segfault at 10
+seed = 4337
+O: error on input
+resources/players/fgarault.filler: Segfault at 0
+X: error on input
 resources/players/grati.filler won
 Score:
-119AGAINST10
+0AGAINST23
