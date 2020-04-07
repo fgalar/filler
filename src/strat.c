@@ -6,54 +6,97 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:01:03 by fgarault          #+#    #+#             */
-/*   Updated: 2020/03/07 16:55:25 by fanny            ###   ########.fr       */
+/*   Updated: 2020/04/07 15:55:19 by fanny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/filler.h"
 
-int		**switchto_int(int **map, t_data *info)
+void	clr_tab(t_data *info, char **hmap)
 {
 	int		y;
 	int		x;
 
-	y = info->height - 1;
-	while (y > 0)
+	y = 0;
+	while (y < info->height)
 	{
-		x = info->width - 1;
-		while (x > 0)
+		x = 0;
+		while (x < info->width)
 		{
-			map[y][x] = 0;
-			if (info->map[y][x] == info->enemy)
-				map[y][x] = 1;
-			if (info->map[y][x] == info->pawn)
-				map[y][x] = 2;
-			ft_print_tab_int(map[y], info->width);
-			--x;
+			info->map[y][x] ==  info->enemy ? (hmap[y][x] = 126) :
+			(hmap[y][x] = '.');
+			x++;
 		}
-		--y;
+		hmap[y][x] = '\0';	
+		y++;
 	}
-	return (map);
+	hmap[y] = 0;
 }
+
+void	fill_score(char **hmap, int	y, int x, int score)
+{
+	if (y > 0)
+	{	
+		if (x > 0 && hmap[y - 1][x - 1] == '.')
+			hmap[y - 1][x - 1] = score;
+		if (hmap[y - 1][x] == '.')
+			hmap[y - 1][x] = score;
+		if (hmap[y - 1][x + 1] != '\0' && hmap[y - 1][x + 1] == '.')
+			hmap[y - 1][x + 1] = score;
+	}
+	if (x > 0 && hmap[y][x - 1] == '.')
+		hmap[y][x - 1] = score;
+	if (hmap[y][x + 1] != '\0' && hmap[y][x + 1] == '.')
+		hmap[y][x + 1] = score;
+	if (hmap[y + 1] != 0)
+	{
+		if (hmap[y + 1][x] == '.')
+			hmap[y + 1][x] = score;
+		if (hmap[y + 1][x - 1] == '.')
+			hmap[y + 1][x - 1] = score;
+		if (hmap[y + 1][x + 1] == '.')
+			hmap[y + 1][x + 1] = score;
+	}
+}
+
+void	set_score(char **hmap, char target, char score)
+{
+	int		y;
+	int		x;
+
+	y = 0;
+	while (hmap[y] != 0)
+	{
+		x = 0;
+		while (hmap[y][x] != '\0')
+		{
+			if (hmap[y][x] == target)
+				fill_score(hmap, y, x, score);
+			x++;
+		}
+		y++;
+	}
+} 
 
 void	score_map(t_data *info, t_solver *mapping)
 {
-	int		score;
 	int		y;
+	char	score;
 
-	score = 10;
 	y = 0;
-	(void)mapping;
-	(void)mapping;
-	if(!(mapping->heat_m = (int**)malloc((sizeof(int*) * (info->height + 2)))))
+	score = 126;
+	if (!(mapping->heat_m = (char**)malloc(sizeof(char*) * info->height + 1)))
 		return ;
 	while (y < info->height)
 	{
-		if (!(mapping->heat_m[y] = (int*)malloc((sizeof(int) * (info->width + 1)))))
+		if (!(mapping->heat_m[y] = (char*)malloc(sizeof(char) * info->width + 1)))
 			return ;
-		mapping->heat_m[y][info->width] = 0;
 		y++;
 	}
-	ft_bzero(mapping->heat_m, info->height);
-	mapping->heat_m = switchto_int(mapping->heat_m, info);	
+	clr_tab(info, mapping->heat_m);
+	while (score > 47)
+	{	
+		set_score(mapping->heat_m, score, score - 1);
+		score--;
+	}
 }
