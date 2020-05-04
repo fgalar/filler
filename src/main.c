@@ -6,56 +6,39 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 13:23:32 by fgarault          #+#    #+#             */
-/*   Updated: 2020/03/07 12:15:37 by fanny            ###   ########.fr       */
+/*   Updated: 2020/05/04 22:48:42 by fanny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/filler.h"
 
-int		main(int ac, char **av)
+int		main(void)
 {
-	(void)ac;
-	(void)av;
-	t_data 		*info;
+	t_info 		*info;
 	t_solver 	*pos;
 	char		*line;
-	int y;
 
-	y = 0;
 	line = NULL;
 	if (!(pos = (t_solver*)malloc(sizeof(t_solver))))
 		return (-1);
-	if (!(info = (t_data*)malloc(sizeof(t_data))))
+	if (!(info = (t_info*)malloc(sizeof(t_info))))
 		return (-1);
+	ft_bzero(info, sizeof(t_info));
 	get_player(info, line);
 	while (1)
 	{
+		clear_new_turn(info, pos);
 		get_size_map(info, line);
-		get_map(info, line);
-		
-	//	display(info);
-		
-		skip_points(info, pos);
+		get_map(info, pos, line);
+		skip_points(pos);
+		score_map(info, pos);
+		display(pos->heat_m, info->height);
 		solve(info, pos);
-
-	/*	while (y < info->height)
-		{
-			ft_strdel(&info->map[y]);
-			y++;
-		}
-		free(info->map);
-
-		y = 0;
-		while (y < info->hght_p)
-		{
-			ft_strdel(&info->piece[y]);
-			y++;
-		}
-		free(info->piece);*/
-		if (pos->y == 0 && pos->x ==0)
+		if (pos->besty_pos == 0 && pos->bestx_pos == 0)
 			break ;
 	}
 	free(info);
+	free(pos);
 	return (0);
 }
 

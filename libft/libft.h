@@ -6,14 +6,16 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 18:19:35 by fgarault          #+#    #+#             */
-/*   Updated: 2019/06/24 17:26:43 by fgarault         ###   ########.fr       */
+/*   Updated: 2020/05/01 20:25:58 by fanny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
-# define BUFF_SIZE 1
+# include "ft_printf/ft_printf.h"
+# define BUFF_SIZE	100
+
 typedef struct		s_list
 {
 	void			*content;
@@ -65,7 +67,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
-char				*ft_itoa(int n);
+char				*ft_itoa(long long n);
 char				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
@@ -81,11 +83,14 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
-int					ft_len_int(int n);
+int					ft_nbrlen(int n);
 void				ft_print_tab(const char **s);
 void				ft_print_tab_int(int *tab, int size);
 int					*ft_sort_integer(int *tab, int size);
 int					ft_power(int nb, int power);
+char				*itoa_base(long long n, int base);
 int					get_next_line(const int fd, char **line);
-
+char				*ft_utoa(unsigned long nb);
+int					ft_ismaj(int c);
+int					ft_printf(const char *format, ...);
 #endif

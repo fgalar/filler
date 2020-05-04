@@ -1,43 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   tools2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/19 20:29:05 by fgarault          #+#    #+#             */
-/*   Updated: 2019/07/17 18:27:14 by fgarault         ###   ########.fr       */
+/*   Created: 2020/03/04 14:47:09 by fgarault          #+#    #+#             */
+/*   Updated: 2020/04/27 20:49:30 by fgarault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
+#include "ft_printf.h"
 
-char		*ft_itoa(long long n)
+void	precis_float(t_data *d)
 {
-	char				*nbr;
-	int					i;
-	unsigned long long	nb;
-
-	i = ft_nbrlen(n);
-	if (!(nbr = ft_strnew(i)))
-		return (NULL);
-	if (n <= 0)
-	{
-		if (n == 0)
-		{
-			nbr[0] = '0';
-			return (nbr);
-		}
-		nbr[0] = '-';
-		n *= -1;
-	}
-	nbr[i] = '\0';
-	nb = n;
-	while (i > 0 && nb > 0)
-	{
-		nbr[--i] = '0' + (nb % 10);
-		nb = nb / 10;
-	}
-	return (nbr);
+	if (d->flag[point] && !d->precis)
+		d->precis -= 1;
+	else if (!d->flag[point])
+		d->precis = 6;
 }

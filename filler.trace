@@ -1,7 +1,4 @@
-seed = 4337
-O: error on input
-resources/players/fgarault.filler: Segfault at 0
-X: error on input
-resources/players/grati.filler won
+seed = 4915
+resources/players/superjeannot.filler won
 Score:
-0AGAINST23
+162AGAINST0

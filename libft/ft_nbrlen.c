@@ -1,16 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_space.c                                      :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/25 15:05:55 by fgarault          #+#    #+#             */
-/*   Updated: 2019/06/25 15:09:21 by fgarault         ###   ########.fr       */
+/*   Created: 2019/04/19 22:49:30 by fgarault          #+#    #+#             */
+/*   Updated: 2019/07/18 08:57:54 by fanny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_is_space(char *str)
+int		ft_nbrlen(long long n)
 {
-	return(if (*str == ' '? 1 : 0));
+	int					len;
+	int					sign;
+	unsigned long long	nb;
+
+	len = 1;
+	sign = -1;
+	if (n < 0)
+	{
+		len++;
+		n *= sign;
+	}
+	nb = n;
+	while (nb >= 10)
+	{
+		nb /= 10;
+		len++;
+	}
+	return (len);
 }
