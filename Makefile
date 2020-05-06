@@ -6,15 +6,16 @@
 #    By: fgarault <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/18 11:42:45 by fgarault          #+#    #+#              #
-#    Updated: 2020/05/04 10:52:39 by fanny            ###   ########.fr        #
+#    Updated: 2020/05/06 22:35:05 by fanny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fgarault.filler
 
 # Compiler
-CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror 
+
+CC		=	clang
+CFLAGS	=	-Wall -Wextra -Werror -g3
 
 # Links
 
@@ -34,6 +35,7 @@ OBJS	=	$(addprefix $(OBJDIR)/,$(SRCS:.c=.o))
 INCLUDE =	include/filler.h
 
 # Default 
+
 all : $(NAME)
 
 $(NAME) : $(LIBFT) $(OBJS)
@@ -45,6 +47,8 @@ $(OBJDIR)%.o: src%.c
 
 $(LIBFT) : 
 	make -C $(LIBDIR)
+
+# Options
 
 norme :
 	@norminette $(SRCS)
@@ -59,8 +63,3 @@ fclean : clean
 	@make fclean -C $(LIBDIR)
 
 re : fclean all
-
-player : $(NAME) 
-	@mv $(NAME) resources/players
-fplay :
-	@rm resources/players/$(NAME)

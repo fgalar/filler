@@ -6,7 +6,7 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:01:03 by fgarault          #+#    #+#             */
-/*   Updated: 2020/05/04 22:51:46 by fanny            ###   ########.fr       */
+/*   Updated: 2020/05/05 11:56:59 by fanny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,5 @@ void	score_map(t_info *info, t_solver *pos)
 		set_score(pos->heat_m, score, score - 1);
 		score--;
 	}
+	pos->heat_m[0][0] = 0;
 }
