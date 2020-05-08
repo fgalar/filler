@@ -6,7 +6,7 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 18:32:39 by fgarault          #+#    #+#             */
-/*   Updated: 2020/05/07 00:36:04 by fanny            ###   ########.fr       */
+/*   Updated: 2020/05/08 19:04:11 by fanny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,25 @@ void	skip_points(t_solver *pos)
 
 	j = 0;
 	i = 0;
-	display(pos->piece);
 	while (j < pos->hght_p && pos->piece[j][i] == '.')
 	{
 		j++;
-		if (j == pos->hght_p)
+		if (j == pos->hght_p && (pos->xless = i + 1))
 		{
 			j = 0;
 			i++;
 		}
 	}
-	pos->xless = i;
 	j = 0;
 	while (i < pos->wdth_p && pos->piece[j][i] == '.')
 	{
 		i++;
-		if (i == pos->wdth_p)
+		if (i == pos->wdth_p && (pos->yless = j + 1))
 		{
 			i = 0;
 			j++;
 		}
 	}
-	pos->yless = j;
-	dprintf(2, "en moins {%d}{%d}\n", pos->yless, pos->xless);
 	skip_endpoints(pos);
 }
 
@@ -97,13 +93,14 @@ int		can_put(t_info *info, t_solver *pos)
 int		solve(t_info *info, t_solver *p)
 {
 	p->y = -(p->yless);
-	while (p->y + p->hght_p < info->height && p->y + p->yless < info->height)
+	while (p->y + p->hght_p < (info->height + 1)
+	&& p->y + p->yless < info->height)
 	{
 		p->x = -(p->xless);
 		(p->y == 0 && p->x == 0) && (p->besty || p->bestx) ? (p->x = 1) : 0;
-		while (p->x + p->wdth_p < info->width && p->y + p->xless < info->width)
+		while (p->x + p->wdth_p < (info->width + 1)
+		&& p->y + p->xless < info->width)
 		{
-			//dprintf(2, "try: [%d][%d]\n", p->y, p->x);
 			if (can_put(info, p))
 			{
 				if ((!p->besty && !p->bestx)
@@ -113,7 +110,6 @@ int		solve(t_info *info, t_solver *p)
 					p->besty = p->y;
 					p->bestx = p->x;
 				}
-				//dprintf(2, "besty=>[%d][%d]\n", p->besty, p->bestx);
 			}
 			p->x++;
 		}

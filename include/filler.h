@@ -6,7 +6,7 @@
 /*   By: fgarault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 13:12:51 by fgarault          #+#    #+#             */
-/*   Updated: 2020/05/07 00:22:32 by fanny            ###   ########.fr       */
+/*   Updated: 2020/05/08 19:04:18 by fanny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define FILLER_H
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 # include "../libft/libft.h"
+# define ERROR -1
+# define SUCCESS 0
 
 typedef struct			s_info
 {
@@ -45,10 +46,10 @@ typedef struct			s_solver
 	int					bestx;
 }						t_solver;
 
-void					parsing(t_info *info);
-void					get_player(t_info *info, char *line);
-void					get_size_map(t_info *info, char *line);
-void					get_map(t_info *info, t_solver *pos, char *line);
+int						get_player(t_info *info, char *line);
+int						get_size_map(t_info *info, char *line);
+int						get_map(t_info *info, t_solver *pos, char *line);
+int						get_size_piece(t_solver *pos, char *line);
 void					skip_points(t_solver *pos);
 int						solve(t_info *info, t_solver *p);
 void					score_map(t_info *info, t_solver *mapping);

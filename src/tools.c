@@ -6,7 +6,7 @@
 /*   By: fanny <fgarault@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 10:18:32 by fanny             #+#    #+#             */
-/*   Updated: 2020/05/07 00:19:50 by fanny            ###   ########.fr       */
+/*   Updated: 2020/05/08 18:09:36 by fanny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,4 @@ void	clear_all(t_solver *pos)
 	clean_tab(pos->map);
 	clean_tab(pos->piece);
 	clean_tab(pos->heat_m);
-}
-
-void	display(char **tab)
-{
-	int		i = 0;
-	while (tab[i])
-		dprintf(2, "%s\n", tab[i++]);
 }
